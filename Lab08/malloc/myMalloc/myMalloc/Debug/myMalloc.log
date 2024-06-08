@@ -1,0 +1,43 @@
+﻿  mm.c
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(115,9): warning C4047: “=”:“unsigned int”与“void *”的间接级别不同
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(122,5): warning C4047: “=”:“unsigned int”与“char *”的间接级别不同
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(196,13): warning C4047: “=”:“void *”与“int”的间接级别不同
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(252,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(259,17): error C2065: “ptr”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(259,17): warning C4022: “mm_free”: 指针与实参 1 不匹配
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(264,9): error C2065: “ptr”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(264,13): warning C4047: “==”:“int”与“void *”的间接级别不同
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(278,15): error C2065: “ptr”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(281,20): error C2065: “ptr”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(281,20): warning C4022: “memcpy”: 指针与实参 2 不匹配
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(284,13): error C2065: “ptr”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(284,13): warning C4022: “mm_free”: 指针与实参 1 不匹配
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(293,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(294,15): error C2065: “verbose”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(306,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(311,13): error C2065: “words”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(311,27): error C2065: “words”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(311,48): error C2065: “words”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(333,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(336,21): error C2065: “asize”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(336,15): warning C4018: “>=”: 有符号/无符号不匹配
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(338,27): error C2065: “asize”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(338,21): warning C4018: “>=”: 有符号/无符号不匹配
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(355,25): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(358,17): warning C4018: “<=”: 有符号/无符号不匹配
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(359,13): warning C4047: “return”:“void *”与“int”的间接级别不同
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(361,5): warning C4047: “return”:“void *”与“int”的间接级别不同
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(368,37): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(369,23): error C2065: “asize”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(382,27): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(389,22): warning C4047: “==”:“unsigned int”与“void *”的间接级别不同
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(402,27): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(414,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(426,9): warning C4033: “coalesce”必须返回值
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(435,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(446,1): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(449,9): error C2065: “verbose”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(458,13): error C2065: “verbose”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(463,9): error C2065: “verbose”: 未声明的标识符
+D:\OneDrive\Files\2024Spring\CSAPP\Lab08\malloc\mm.c(207,1): error C1075: “{”: 未找到匹配令牌

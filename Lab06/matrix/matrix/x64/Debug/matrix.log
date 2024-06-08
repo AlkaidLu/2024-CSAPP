@@ -1,0 +1,4 @@
+﻿  rowcol.c
+E:\AAAzlytemp\OneDrive\Files\2024Spring\CSAPP\Lab06\matrix\rowcol.c(37,12): warning C4101: “m”: 未引用的局部变量
+E:\AAAzlytemp\OneDrive\Files\2024Spring\CSAPP\Lab06\matrix\rowcol.c(81,12): warning C4101: “m”: 未引用的局部变量
+  matrix.vcxproj -> E:\AAAzlytemp\OneDrive\Files\2024Spring\CSAPP\Lab06\matrix\matrix\x64\Debug\matrix.exe

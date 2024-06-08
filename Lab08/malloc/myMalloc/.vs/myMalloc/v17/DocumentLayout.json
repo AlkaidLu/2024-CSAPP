@@ -1,0 +1,50 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\OneDrive\\Files\\2024Spring\\CSAPP\\Lab08\\malloc\\myMalloc\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5C1ED0A5-23CE-4040-A263-C9C69E0BEAC7}|myMalloc.vcxproj|D:\\OneDrive\\Files\\2024Spring\\CSAPP\\Lab08\\malloc\\mm.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 4,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 100,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "mm.c",
+              "DocumentMoniker": "D:\\OneDrive\\Files\\2024Spring\\CSAPP\\Lab08\\malloc\\mm.c",
+              "RelativeDocumentMoniker": "..\\mm.c",
+              "ToolTip": "D:\\OneDrive\\Files\\2024Spring\\CSAPP\\Lab08\\malloc\\mm.c",
+              "RelativeToolTip": "..\\mm.c",
+              "ViewState": "AQIAAJUBAAAAAAAAAAA4wJUBAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-05-22T13:16:05.015Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
