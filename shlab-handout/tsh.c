@@ -303,59 +303,7 @@ line.
  */
 void do_bgfg(char **argv) 
 {
-    /*
-    int argv_read=(argv[1]!=NULL);
-    if(!argv_read){
-        printf("%s command requires PID or %%jobid argument\n",argv[0]);
-        return;
-    }
-    bool valid=1;
-    int i=0;
-    bool isjid=0;
-    if(argv[1][0]=="%"){
-        i=1;
-        isjid=1;
-    }
-    while(argv[1][i] != '\0'){
-        if (!isdigit(argv[1][i]))  // 从第二个字符开始判断是否为数字
-           {
-            valid=0;
-            break;
-           }
-        i++;
-    }
-    if(valid==0){
-        printf("%s: argument must be a PID or %%jobid\n",argv[0]);
-        return;
-    }
-    
-    struct job_t * job_ptr=NULL;
-    if(isjid){
-        job_ptr= getjobjid(jobs,atoi(argv[1]+1));
-    }
-    else{
-        job_ptr=getjobpid(jobs,atoi(argv[1]));
-    }
-    if(!job_ptr){
-        if(isjid) printf("%s: No such job\n",argv[1]);
-        else printf("(%s): No such process\n",argv[1]);
-        return;
-    }
 
-    if(!strcmp(argv[0],"bg")){
-        job_ptr->state= BG;
-        kill(-job_ptr->pid,SIGCONT);
-        printf("[%d] (%d) %s",job_ptr->jid,job_ptr->pid,job_ptr->cmdline);
-        
-    }
-    else{
-        
-        job_ptr->state= FG;
-        kill(-job_ptr->pid,SIGCONT);
-        waitfg(job_ptr->pid);
-    }
-    return;
-    */
      int bg_fg = (!strcmp(argv[0],"bg")) + 1; 
     
     bool argv1_read = (argv[1] != NULL);
@@ -399,30 +347,13 @@ void do_bgfg(char **argv)
  */
 void waitfg(pid_t pid)
 {
-    /*
-    sigset_t mask, prev_mask;
+    sigset_t mask;
     sigemptyset(&mask);
-    sigaddset(&mask, SIGCHLD);
-    while(1){
-        sigprocmask(SIG_BLOCK, &mask, &prev_mask);
-        int ret = fgpid(jobs);
-        while(ret==pid)
-            sigsuspend(&prev_mask);
-        sigprocmask(SIG_SETMASK, &prev_mask, NULL);
+
+    while (fgpid(jobs)) {
+        sigsuspend(&mask);
     }
-    return;
-    */
-    sigset_t mask_none,prev_all;
-    sigemptyset(&mask_none);
-    while(1)
-    {
-        sigprocmask(SIG_SETMASK,&mask_none,&prev_all);
-        int ret = fgpid(jobs);
-        if(!ret) break;
-        sleep(1);
-        sigprocmask(SIG_SETMASK,&prev_all,NULL);
-    }
-    return;
+
 }
 
 /*****************
@@ -436,57 +367,6 @@ void waitfg(pid_t pid)
  *     available zombie children, but doesn't wait for any other
  *     currently running children to terminate.  
  */
-void sigchld_handler(int sig) 
-{
-    int olderrno= errno;
-    int status;
-    sigset_t mask_all,prev_mask;
-    pid_t pid;
-
-    sigfillset(&mask_all);
-    while((pid=waitpid(-1,&status,WNOHANG | WUNTRACED))>0){
-        sigprocmask(SIG_BLOCK,&mask_all,&prev_mask);
-         struct job_t* job = getjobpid(jobs,pid);
-        
-        if(WIFSIGNALED(status) && WTERMSIG(status) == SIGINT && job->state != UNDEF)
-            printf("Job [%d] (%d) terminated by signal 2\n",job->jid,job->pid);
-        else if(WIFSTOPPED(status) && WSTOPSIG(status) == SIGTSTP && job->state != ST)
-        {
-            printf("Job [%d] (%d) stopped by signal 20\n",job->jid,job->pid);
-            job->state = ST;
-        }
-
-        if(getjobpid(jobs,pid)->state != ST) deletejob(jobs,pid);
-        sigprocmask(SIG_SETMASK,&prev_mask,NULL);
-    }
-    
-    errno=olderrno;
-    return;
-}
-
-/* 
- * sigint_handler - The kernel sends a SIGINT to the shell whenver the
- *    user types ctrl-c at the keyboard.  Catch it and send it along
- *    to the foreground job.  
- */
-void sigint_handler(int sig) 
-{
-    int fg_pid=fgpid(jobs);
-    int fg_jid=pid2jid(fg_pid);
-    if(!fg_pid) return;
-    sigset_t mask_all, prev_mask;
-    sigfillset(&mask_all);
-    sigprocmask(SIG_BLOCK, &mask_all,&prev_mask);
-
-    struct job_t *job= getjobpid(jobs,fg_pid);
-    job->state = UNDEF;
-    kill(-fg_pid,2);//2--SIGINT
-
-     printf("Job [%d] (%d) terminated by signal 2\n",fg_jid,fg_pid);
-
-    sigprocmask(SIG_SETMASK, &prev_mask,NULL);
-    return;
-}
 void sigchld_handler(int sig) 
 {
     int olderrno= errno;
