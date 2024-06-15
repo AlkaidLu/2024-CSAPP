@@ -399,30 +399,15 @@ void do_bgfg(char **argv)
  */
 void waitfg(pid_t pid)
 {
-    /*
-    sigset_t mask, prev_mask;
+
+    sigset_t mask;
     sigemptyset(&mask);
-    sigaddset(&mask, SIGCHLD);
-    while(1){
-        sigprocmask(SIG_BLOCK, &mask, &prev_mask);
-        int ret = fgpid(jobs);
-        while(ret==pid)
-            sigsuspend(&prev_mask);
-        sigprocmask(SIG_SETMASK, &prev_mask, NULL);
-    }
+    int ret = 0;
+    while(!ret)
+        sigsuspend(&mask);
+    
     return;
-    */
-    sigset_t mask_none,prev_all;
-    sigemptyset(&mask_none);
-    while(1)
-    {
-        sigprocmask(SIG_SETMASK,&mask_none,&prev_all);
-        int ret = fgpid(jobs);
-        if(!ret) break;
-        sleep(1);
-        sigprocmask(SIG_SETMASK,&prev_all,NULL);
-    }
-    return;
+
 }
 
 /*****************
