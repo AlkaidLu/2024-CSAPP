@@ -487,6 +487,57 @@ void sigint_handler(int sig)
     sigprocmask(SIG_SETMASK, &prev_mask,NULL);
     return;
 }
+void sigchld_handler(int sig) 
+{
+    int olderrno= errno;
+    int status;
+    sigset_t mask_all,prev_mask;
+    pid_t pid;
+
+    sigfillset(&mask_all);
+    while((pid=waitpid(-1,&status,WNOHANG | WUNTRACED))>0){
+        sigprocmask(SIG_BLOCK,&mask_all,&prev_mask);
+         struct job_t* job = getjobpid(jobs,pid);
+        
+        if(WIFSIGNALED(status) && WTERMSIG(status) == SIGINT && job->state != UNDEF)
+            printf("Job [%d] (%d) terminated by signal 2\n",job->jid,job->pid);
+        else if(WIFSTOPPED(status) && WSTOPSIG(status) == SIGTSTP && job->state != ST)
+        {
+            printf("Job [%d] (%d) stopped by signal 20\n",job->jid,job->pid);
+            job->state = ST;
+        }
+
+        if(getjobpid(jobs,pid)->state != ST) deletejob(jobs,pid);
+        sigprocmask(SIG_SETMASK,&prev_mask,NULL);
+    }
+    
+    errno=olderrno;
+    return;
+}
+
+/* 
+ * sigint_handler - The kernel sends a SIGINT to the shell whenver the
+ *    user types ctrl-c at the keyboard.  Catch it and send it along
+ *    to the foreground job.  
+ */
+void sigint_handler(int sig) 
+{
+    int fg_pid=fgpid(jobs);
+    int fg_jid=pid2jid(fg_pid);
+    if(!fg_pid) return;
+    sigset_t mask_all, prev_mask;
+    sigfillset(&mask_all);
+    sigprocmask(SIG_BLOCK, &mask_all,&prev_mask);
+
+    struct job_t *job= getjobpid(jobs,fg_pid);
+    job->state = UNDEF;
+    kill(-fg_pid,2);//2--SIGINT
+
+     printf("Job [%d] (%d) terminated by signal 2\n",fg_jid,fg_pid);
+
+    sigprocmask(SIG_SETMASK, &prev_mask,NULL);
+    return;
+}
 
 /*
  * sigtstp_handler - The kernel sends a SIGTSTP to the shell whenever
